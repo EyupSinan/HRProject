@@ -1,0 +1,148 @@
+﻿@model HRProjectApplication.Models.VMs.DashboardVM
+
+@{
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<!DOCTYPE html>
+<link rel="stylesheet" href=".~/writer/assets/vendors/mdi/css/materialdesignicons.min.css">
+<link rel="stylesheet" href="~/writer/assets/vendors/css/vendor.bundle.base.css">
+<!-- endinject -->
+<!-- Plugin css for this page -->
+<!-- End plugin css for this page -->
+<!-- inject:css -->
+<!-- endinject -->
+<!-- Layout styles -->
+<link rel="stylesheet" href="~/writer/assets/css/style.css">
+<!-- End layout styles -->
+<link rel="shortcut icon" href="~/writer/assets/images/favicon.ico" />
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+                @*<p class="card-description">
+                        Add class <code>.table-hover</code>
+                    </p>*@
+                @if (User.IsInRole("Manager") )
+                {
+                    <div class="col-lg-6 grid-margin stretch-card">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">Last 5 Employees</h4>
+                                <table class="table table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>Surname</th>
+                                            <th>Create Date</th>
+                                            <th>Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var item in Model.Employees)
+                                        {
+                                            <tr>
+                                                <td>@item.Name</td>
+                                                <td>@item.Surname</td>
+                                                <td>@item.CreateDate.ToString("dd-MM-yyyy")</td>
+                                                @if (item.Status == HRProjectDomain.Enums.Status.Modified)
+                                                {
+                                                    <td><label class="badge badge-gradient-danger">@item.Status</label></td>
+                                                }
+                                                else
+                                                {
+                                                    <td><label class="badge badge-gradient-success">@item.Status</label></td>
+                                                }
+                                            </tr>
+                                        }
+
+                                    </tbody>
+
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                }
+                else if (User.IsInRole("Admin"))
+                {
+                    <div class="col-lg-6 grid-margin stretch-card">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">Last 5 Companies</h4>
+
+                                <table class="table table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>Id</th>
+                                            <th>CompanyName</th>
+                                            <th>Create Date</th>
+                                            <th>Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var item in Model.Companies)
+                                        {
+                                            <tr>
+                                                <td>@item.Id</td>
+                                                <td>@item.CompanyName</td>
+                                                <td>@item.CreateDate.ToString("dd-MM-yyyy")</td>
+                                                @if (item.Status == HRProjectDomain.Enums.Status.Modified)
+                                                {
+                                                    <td><label class="badge badge-gradient-danger">@item.Status</label></td>
+                                                }
+                                                else
+                                                {
+                                                    <td><label class="badge badge-gradient-success">@item.Status</label></td>
+                                                }
+                                            </tr>
+                                        }
+
+                                    </tbody>
+
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="col-lg-6 grid-margin stretch-card">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">Last 5 Managers</h4>
+
+                                <table class="table table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>User Name</th>
+                                            <th>Company Id</th>
+                                            <th>Company Name</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var item in Model.Managers)
+                                        {
+                                            <tr>
+                                                <td>@item.FullName</td>
+                                                <td>@item.Username</td>
+                                                <td>@item.CompanyId</td>
+                                                <td>@item.Company.CompanyName</td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                }
+</body>
+</html>
+
+<script src="~/writer/assets/vendors/js/vendor.bundle.base.js"></script>
+
+<script src="~/writer/assets/js/off-canvas.js"></script>
+<script src="~/writer/assets/js/hoverable-collapse.js"></script>
+<script src="~/writer/assets/js/misc.js"></script>

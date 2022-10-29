@@ -1,0 +1,95 @@
+﻿@model IEnumerable<HRProjectApplication.Models.VMs.LeaveVM>
+
+@{
+    ViewData["Title"] = "Pending";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+<div class="col-lg-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h3 class="card-title">Pending</h3>
+            <p>
+                <a asp-action="Index">List All</a>
+                <a asp-action="Approved">Approved</a>
+                <a asp-action="Pending">Pending</a>
+                <a asp-action="Denied">Denied</a>
+            </p>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Id)
+                        </th>
+                        <th hidden>
+                            @Html.DisplayNameFor(model => model.IsApproved)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.RequestStatus)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.LeaveType)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.StartDate)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.EndDate)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.NumberOfDays)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.CreateDate)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.UserId)
+                        </th>
+                        <th>
+                            Actions
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Id)
+                            </td>
+                            <td hidden>
+                                @Html.DisplayFor(modelItem => item.IsApproved)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.RequestStatus)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.LeaveType)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.StartDate)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.EndDate)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.NumberOfDays)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.CreateDate)
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.UserId)
+                            </td>
+                            <td>
+                                @Html.ActionLink("Approve", "ApproveRequest", new { id = item.Id }) |
+                                @Html.ActionLink("Deny", "DenyRequest", new { id = item.Id }) |
+                                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

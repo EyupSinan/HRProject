@@ -1,0 +1,83 @@
+﻿@model HRProjectApplication.Models.VMs.AppUserEmployeeVM
+
+@{
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+    ViewData["Title"] = "Details";
+}
+
+<h3>Account Details</h3>
+
+<div class="card">
+    <div class="card-body">
+        <h4 class="card-title">My Profile</h4>
+        <hr />
+        <form class="form-sample">
+            <p class="card-description"></p>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group row">
+                        <label class="col-sm-3 col-form-label">UserName</label>
+                        <div class="col-sm-9">
+                            <input type="text" value="@Model.Username" readonly class="form-control" />
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group row">
+                        <label class="col-sm-3 col-form-label">Name</label>
+                        <div class="col-sm-9">
+                            <input type="text" value="@Model.Name" readonly class="form-control" />
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group row">
+                        <label class="col-sm-3 col-form-label">Surname</label>
+                        <div class="col-sm-9">
+                            <input type="text" value="@Model.Surname" readonly class="form-control" />
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group row">
+                        <label class="col-sm-3 col-form-label">E-mail</label>
+                        <div class="col-sm-9">
+                            <input type="email" value="@Model.Email" readonly class="form-control" />
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group row">
+                        <label class="col-sm-3 col-form-label">Phone Number</label>
+                        <div class="col-sm-9">
+                            <input type="number" value="@Model.PhoneNumber" readonly class="form-control" />
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group row">
+                        <label class="col-sm-3 col-form-label">BirthDate</label>
+                        <div class="col-sm-9">
+                            <input type="datetime" value="@Model.BirthDate.ToString("dd-MM-yyyy")" readonly class="form-control" />
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group row">
+                        <label class="col-sm-3 col-form-label">Gender</label>
+                        <div class="col-sm-9">
+                            <input type="text" value="@Model.Gender" readonly class="form-control" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<div>
+    <br />
+    <b>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+        <a asp-controller="Home" asp-action="Index">Back to List</a>
+    </b>
+</div>
